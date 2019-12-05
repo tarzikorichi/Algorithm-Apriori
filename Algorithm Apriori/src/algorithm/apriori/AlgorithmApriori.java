@@ -29,6 +29,7 @@ public class AlgorithmApriori {
         for (int i = 0; i < t.size(); i++) {
             t.get(i).Affiche();
         }
+        System.out.println("resulata est :"+init.toArray());
     }
     
 }

@@ -11,7 +11,7 @@ package algorithm.apriori;
  */
 public class Transaction {
     public String Nom;
-    private char [] allItems;
+    public char [] allItems;
     private Boolean accept; 
     
     public Transaction(String n, char [] allItem){
@@ -36,4 +36,7 @@ public class Transaction {
         }
         System.out.println();
     }
+    
+    
+    
 }
