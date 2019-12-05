@@ -11,10 +11,10 @@ package algorithm.apriori;
  */
 public class Transaction {
     public String Nom;
-    private String [] allItems;
+    private char [] allItems;
     private Boolean accept; 
     
-    public Transaction(String n, String [] allItem){
+    public Transaction(String n, char [] allItem){
         this.Nom = n;
         this.allItems = allItem;
     }
@@ -27,5 +27,13 @@ public class Transaction {
     }
     public boolean getAccept(){
         return this.accept;
+    }
+    
+    public void Affiche(){
+        System.out.print(this.Nom+" :");
+        for (int i = 0; i < this.allItems.length; i++) {
+            System.out.print(this.allItems[i]+", ");
+        }
+        System.out.println();
     }
 }

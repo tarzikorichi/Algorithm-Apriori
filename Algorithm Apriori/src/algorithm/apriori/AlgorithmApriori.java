@@ -5,6 +5,11 @@
  */
 package algorithm.apriori;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 /**
  *
  * @author Korichi Tarzi
@@ -14,8 +19,16 @@ public class AlgorithmApriori {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws FileNotFoundException {
+        Initialize init = new Initialize();
+        init.affiche();
+        init.readFile();
+        
+        LinkedList<Transaction> t = init.allTr;
+        
+        for (int i = 0; i < t.size(); i++) {
+            t.get(i).Affiche();
+        }
     }
     
 }
