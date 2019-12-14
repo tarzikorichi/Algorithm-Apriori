@@ -124,11 +124,7 @@ public class Initialize {
         
     }
     
-    public void tt(String n){
-        for(Transaction t : allTr){
-            System.out.println("for "+t.nomTr+":"+n+" est :"+t.searchForItem(n));
-        }
-    }
+    
     
     
 }

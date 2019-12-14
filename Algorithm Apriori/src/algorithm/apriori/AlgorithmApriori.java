@@ -50,24 +50,20 @@ public class AlgorithmApriori {
         for (int j = 0; j < i.size(); j++) {
             if(i.get(j).isAcc)
                 System.out.println(i.get(j).nom+" :"+i.get(j).occ+" --------accept : "+i.get(j).isAcc);
-            else
-                System.err.println(i.get(j).nom+" :"+i.get(j).occ+" --------accept : "+i.get(j).isAcc);
         }
+        
+        
         System.out.println("----------- 2");
         init.calcul(s1);
         for (int j = 0; j < s1.size(); j++) {
             if(s1.get(j).isAcc)
                 System.out.println(s1.get(j).nom+" :"+s1.get(j).occ+" --------accept : "+s1.get(j).isAcc);
-            else
-                System.err.println(s1.get(j).nom+" :"+s1.get(j).occ+" --------accept : "+s1.get(j).isAcc);
         }
         System.out.println("----------- 3");
         init.calcul(s2);
          for (int j = 0; j < s2.size(); j++) {
              if(s2.get(j).isAcc)
                 System.out.println(s2.get(j).nom+" :"+s2.get(j).occ+" --------accept : "+s2.get(j).isAcc);
-             else
-                 System.err.println(s2.get(j).nom+" :"+s2.get(j).occ+" --------accept : "+s2.get(j).isAcc);
         }
     }
 }
