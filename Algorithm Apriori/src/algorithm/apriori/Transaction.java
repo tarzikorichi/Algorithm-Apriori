@@ -10,33 +10,34 @@ package algorithm.apriori;
  * @author Korichi Tarzi
  */
 public class Transaction {
-    public String Nom;
-    public char [] allItems;
-    private Boolean accept; 
-    
-    public Transaction(String n, char [] allItem){
-        this.Nom = n;
-        this.allItems = allItem;
+   public String nomTr;
+   private char[] items;
+   private boolean accept;
+           
+   public Transaction(String n ,char[] i){
+       this.nomTr = n;
+       this.items = i;
+   }
+
+    char[] getItems() {
+        return this.items;
     }
     
-    public void setAccept(){
-        this.accept = true;
-    }
-    public void setNotAccept(){
-        this.accept = false;
-    }
-    public boolean getAccept(){
-        return this.accept;
-    }
     
-    public void Affiche(){
-        System.out.print(this.Nom+" :");
-        for (int i = 0; i < this.allItems.length; i++) {
-            System.out.print(this.allItems[i]+", ");
+    public boolean searchForItem(String nom){
+        char[] all = nom.toCharArray();
+        int b = 0;
+        
+        for(char item :items){
+            for(char c :all){
+                if(item == c){
+                    b++;
+                }
+            }
         }
-        System.out.println();
+        if(b == nom.length()){
+            return true;
+        }else
+            return false;
     }
-    
-    
-    
 }

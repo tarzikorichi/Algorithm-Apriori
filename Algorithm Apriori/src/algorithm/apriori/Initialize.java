@@ -19,14 +19,18 @@ public class Initialize {
     private String file;
     private String allItems;
     LinkedList<Transaction> allTr = new LinkedList<Transaction>();
+    
+    LinkedList<Item> items = new LinkedList<Item>();
     public char [] tmp;
     
     Transaction t;
     
     Scanner input = new Scanner(System.in); 
     public Initialize(){
+        System.out.println("use this file :C:\\Users\\aryan\\OneDrive\\Documents\\NetBeansProjects\\Algorithm-Apriori\\Algorithm Apriori\\src\\algorithm\\apriori\\File.txt");
         this.seuil = this.getSeuil();
         this.file  = this.getPath();
+        
     }
     
     private final int getSeuil(){
@@ -34,7 +38,12 @@ public class Initialize {
         this.seuil = this.input.nextInt();
         return this.seuil;
     }
+    
+    public int getS(){
+        return this.seuil;
+    }
 
+    
     private String getPath() {
         System.out.print("Entrez le chemin du fichier :");
         this.input.useDelimiter("\n");
@@ -58,41 +67,68 @@ public class Initialize {
         }
     }
     
-    public LinkedList<Transaction> get(){
-        return this.allTr;
+    public void aff(){
+        for (int i = 0; i < allTr.size(); i++) {
+            System.out.print(allTr.get(i).nomTr+" :");
+            for (int j = 0; j < allTr.get(i).getItems().length; j++) {
+                System.out.print(" "+allTr.get(i).getItems()[j]);
+            }
+            System.out.println();
+        }
     }
     
-    public void affiche(){
-        System.out.println(" Seuil :"+this.seuil);
-        System.out.println(" File :"+this.file);
-    } 
-    // C:\Users\aryan\OneDrive\Documents\NetBeansProjects\Algorithm-Apriori\Algorithm Apriori\src\algorithm\apriori\File.txt
-    public String toArray(){
-        String tmp6 = "";
-        for (int i = 0; i < allTr.size(); i++) {
-            this.tmp = this.allTr.get(i).allItems;                                      
-            for (int j = 0; j < this.tmp.length; j++) {                                  
-                //this.allTrArray.add(this.tmp[j]+"");                                     
-                tmp6 += this.tmp[j];
-            }                                                                            
+    public LinkedList<Item> toItems(){
+        char[] t;
+        String R = "";
+        t = allTr.get(0).getItems();
+        for (int i = 0; i < t.length; i++) {
+            R += t[i]+"";
         }
-        char[] tmp1 = tmp6.toCharArray();
-        char[] tmp2 = tmp6.toCharArray();
-        
-        for (int i = 0; i < tmp1.length; i++) {
-            for (int j = i+1; j < tmp2.length; j++) {
-                if(tmp1[i] == tmp2[j]){
-                    tmp2[j] = 'n'; // n for null
+
+        for (int i = 1; i < allTr.size(); i++) {
+            t = allTr.get(i).getItems();
+            for (int j = 0; j < t.length; j++) {
+                if(!R.contains(t[j]+"")){
+                    R += t[j]+"";
                 }
             }
         }
-        tmp6="";
-        for (int i = 0; i < tmp2.length; i++) {
-            if(tmp2[i] != 'n'){
-                tmp6 += tmp2[i];
-            }
+        System.out.println("resulat is: "+R);
+        for (int i = 0; i < R.length(); i++) {
+            this.items.add(new Item(R.charAt(i)+""));
         }
-        this.allItems = tmp6;
-        return tmp6;
-    } 
+        return this.items;
+    }
+ 
+    // C:\Users\aryan\OneDrive\Documents\NetBeansProjects\Algorithm-Apriori\Algorithm Apriori\src\algorithm\apriori\File.txt
+    
+    
+    
+    public void calcul(LinkedList<Item> itm){
+        // all Transaction in : allTr :
+        // all items          : item  :
+        int a;
+        for(Item it :itm){
+            a = 0;
+            for(Transaction t: this.allTr){
+                if(t.searchForItem(it.nom)){
+                    a++;
+                }
+            }
+            it.setOcc(a);
+        }
+        
+        for(Item it : itm){
+            it.isAccept(this.seuil);
+        }
+        
+    }
+    
+    public void tt(String n){
+        for(Transaction t : allTr){
+            System.out.println("for "+t.nomTr+":"+n+" est :"+t.searchForItem(n));
+        }
+    }
+    
+    
 }
