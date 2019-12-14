@@ -33,15 +33,14 @@ public class AlgorithmApriori {
         
         LinkedList<Item> s1 = s.search1();
         
-        for (int j = 0; j < s1.size(); j++) {
-            System.out.println(s1.get(j).nom+" :"+s1.get(j).occ);
-        }
-        
+       
         LinkedList<Item> s2 = s.search2();
         
-        for (int j = 0; j < s2.size(); j++) {
-            System.out.println(s2.get(j).nom+" :"+s2.get(j).occ);
-        }
+       
+        LinkedList<Item> s3 = s.search3();
+        
+        LinkedList<Item> s4 = s.search4();
+        
         
         System.out.println("----------------------------------------");
         //init.tt("AB");
@@ -64,6 +63,52 @@ public class AlgorithmApriori {
          for (int j = 0; j < s2.size(); j++) {
              if(s2.get(j).isAcc)
                 System.out.println(s2.get(j).nom+" :"+s2.get(j).occ+" --------accept : "+s2.get(j).isAcc);
+        }
+        
+        System.out.println("----------- 4");
+        init.calcul(s3);
+         for (int j = 0; j < s3.size(); j++) {
+             if(s3.get(j).isAcc)
+                System.out.println(s3.get(j).nom+" :"+s3.get(j).occ+" --------accept : "+s3.get(j).isAcc);
+        }
+        
+        System.out.println("----------- 5");
+        init.calcul(s4);
+         for (int j = 0; j < s4.size(); j++) {
+             if(s4.get(j).isAcc)
+                System.out.println(s4.get(j).nom+" :"+s4.get(j).occ+" --------accept : "+s4.get(j).isAcc);
+        }
+         
+        System.out.println("----------------------------------- Motifs fréquents");
+         
+        init.calcul(i);
+        for (int j = 0; j < i.size(); j++) {
+            if(i.get(j).isAcc)
+                System.out.println("{"+i.get(j).nom+"} = "+i.get(j).occ+" / "+init.getTrLen());
+        }
+        
+ 
+        init.calcul(s1);
+        for (int j = 0; j < s1.size(); j++) {
+            if(s1.get(j).isAcc)
+                System.out.println("{"+s1.get(j).nom+"} = "+s1.get(j).occ+" / "+init.getTrLen());
+        }
+
+        init.calcul(s2);
+         for (int j = 0; j < s2.size(); j++) {
+             if(s2.get(j).isAcc)
+                System.out.println("{"+s2.get(j).nom+"} = "+s2.get(j).occ+" / "+init.getTrLen());
+        }
+         
+        init.calcul(s3);
+         for (int j = 0; j < s3.size(); j++) {
+             if(s3.get(j).isAcc)
+                System.out.println("{"+s3.get(j).nom+"} = "+s3.get(j).occ+" / "+init.getTrLen());
+        }
+        init.calcul(s4);
+         for (int j = 0; j < s4.size(); j++) {
+             if(s4.get(j).isAcc)
+                System.out.println("{"+s4.get(j).nom+"} = "+s4.get(j).occ+" / "+init.getTrLen());
         }
     }
 }

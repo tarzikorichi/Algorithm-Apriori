@@ -18,6 +18,7 @@ public class Initialize {
     private int seuil;
     private String file;
     private String allItems;
+    private int trLen;
     LinkedList<Transaction> allTr = new LinkedList<Transaction>();
     
     LinkedList<Item> items = new LinkedList<Item>();
@@ -42,7 +43,10 @@ public class Initialize {
     public int getS(){
         return this.seuil;
     }
-
+    
+    public int getTrLen(){
+        return this.trLen;
+    }
     
     private String getPath() {
         System.out.print("Entrez le chemin du fichier :");
@@ -62,6 +66,7 @@ public class Initialize {
               this.allTr.add(new Transaction("T"+i, tab));
               i++;
             }
+            this.trLen = this.allTr.size();
         }catch(FileNotFoundException ex){
             System.err.println("File not found : "+ex.getMessage());
         }
@@ -97,6 +102,7 @@ public class Initialize {
         for (int i = 0; i < R.length(); i++) {
             this.items.add(new Item(R.charAt(i)+""));
         }
+        
         return this.items;
     }
  
